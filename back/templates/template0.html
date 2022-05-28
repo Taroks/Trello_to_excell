@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru">
+    <!-- Обязательные метатеги -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        TABLE {
+         width: 100%; /* Ширина таблицы */
+         height: 100%; /* Высота таблицы */   
+        } 
+        /* Form Style */
+        .form-horizontal{
+         background: #fff;
+         padding-bottom: 40px;
+         border-radius: 15px;
+         text-align: center;
+        }
+        .form-horizontal .heading{
+         display: block;
+         font-size: 35px;
+         font-weight: 700;
+         padding: 35px 0;
+         border-bottom: 1px solid #f0f0f0;
+         margin-bottom: 30px;
+        }
+        .form-horizontal .form-group{
+         padding: 0 40px;
+         margin: 0 0 25px 0;
+         position: relative;
+        }
+        .form-horizontal .form-control{
+         background: #f0f0f0;
+         border: none;
+         border-radius: 20px;
+         box-shadow: none;
+         padding: 0 20px 0 45px;
+         height: 40px;
+         transition: all 0.3s ease 0s;
+        }
+        .form-horizontal .form-control:focus{
+         background: #e0e0e0;
+         box-shadow: none;
+         outline: 0 none;
+        }
+        .form-horizontal .form-group i{
+         position: absolute;
+         top: 12px;
+         left: 60px;
+         font-size: 17px;
+         color: #c8c8c8;
+         transition : all 0.5s ease 0s;
+        }
+        .form-horizontal .form-control:focus + i{
+         color: #00b4ef;
+        }
+        .form-horizontal .fa-question-circle{
+         display: inline-block;
+         position: absolute;
+         top: 12px;
+         right: 60px;
+         font-size: 20px;
+         color: #808080;
+         transition: all 0.5s ease 0s;
+        }
+        .form-horizontal .fa-question-circle:hover{
+         color: #000;
+        }
+        .form-horizontal .text{
+         float: left;
+         margin-left: 7px;
+         line-height: 20px;
+         padding-top: 5px;
+         text-transform: capitalize;
+        }
+        .form-horizontal .btn{
+         float: center;
+         font-size: 14px;
+         color: #fff;
+         background: #808080;
+         border-radius: 30px;
+         padding: 10px 25px;
+         border: none;
+         text-transform: capitalize;
+         transition: all 0.5s ease 0s;
+        }
+        @media only screen and (max-width: 479px){
+         .form-horizontal .form-group{
+         padding: 0 25px;
+         }
+         .form-horizontal .form-group i{
+         left: 45px;
+         }
+         .form-horizontal .btn{
+         padding: 10px 20px;
+         }
+        }
+       </style>
+
+    {%extends "bootstrap/base.html"%}
+ 
+    {%block navbar %}
+    <div class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Ravensight</a>
+            </div>
+
+            <div class="navbar-collapse collapse"  id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/data">Данные <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/spreadsheet">Таблица</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+     
+    {% endblock %}
+    {% block content %}
+    <div class="container">
+        <table>
+            <tr>
+                <td align="center">
+                <div class="page-header">
+                    <h1>Привет, {{ name }}!</h1>
+                </div>
+                    <h1 class = "text" if ({{data}} === true){> Для работы инструмента с твоими таблицами введи свои key и token, они будут захэшированы для безопасности </h1>
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                              <label for="inputkey" class="col-xs-2 control-label">Key:</label>
+                              <div class="col-xs-10">
+                                <input type="key" class="form-control" id="inputkey" placeholder="Введите key">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="inputtoken" class="col-xs-2 control-label">Token:</label>
+                              <div class="col-xs-10">
+                                <input type="token" class="form-control" id="inputtoken" placeholder="Введите token">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                            </div>
+                            <div class="form-group">
+                              <div class="col-xs-offset-1 col-xs-10">
+                                <button type="submit" class="btn btn-success">Сохранить</button>
+                              </div>
+                            </div>
+                          </form>
+                    <h1 class = "text"> Если ты уже ввел данные в систему, можно переходить к таблицам </h1>
+                </td>
+            </tr>
+        </table>
+    </div>
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</html>
